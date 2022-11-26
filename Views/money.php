@@ -2,6 +2,8 @@
     $eleccion = $_GET["op"];
     $gano = $_GET["f"];
     $op = $_GET["j"];
+    $a = $_GET["a"];
+    $cuenta = $_GET["c"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,7 +48,20 @@
     <div class="dashboard">
         <h3>Tu eleccion fue: <?php if($op == 0){ echo "Cara";} else if($op == 1){ echo "Sello"; } ?></h3>
         <p>Y el sistema escogio: <?php if ($eleccion == "Cara"){ echo "Cara";} else if($eleccion == "Sello") { echo "Sello"; }?></p>
-        <a href="../index.php">Volver a jugar</a>
+        <p>El dinero acumulado es: <?php echo $cuenta ?></p>
+        <center>
+        <form action="../Controller/gameController.php" method="post">
+            <input type="hidden" value="<?php echo $a ?>" name="dinheiro">
+            <input type="hidden" value="<?php echo $cuenta ?>" name="cuenta">
+            <select name="op" id="op">
+                    <option value="0">Cara</option>
+                    <option value="1">Sello</option>
+            </select><br><br>
+            <input type="submit" value="volver a jugar">
+        </form>
+        <br>
+        </center>
+        <a href="../index.php">Volver al inicio</a><br>
     </div>
 </body>
 </html>
